@@ -1,0 +1,13 @@
+# Optional: run the API in a production-like container.
+# MongoDB is NOT started here — the app connects to MongoDB Atlas via MONGODB_URI in .env.
+services:
+  api:
+    build: .
+    image: node-express-mongo-starter:latest
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+    ports:
+      - '4000:4000'
+    restart: unless-stopped
